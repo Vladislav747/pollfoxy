@@ -1,0 +1,1 @@
+Первый скрипт package.json -> start -> node app.js

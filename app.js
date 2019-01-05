@@ -1,5 +1,7 @@
 //Bringing the dependencies
 const express = require('express');
+//To manage for path routes
+const path = require('path');
 const bodyParser = require('body-parser');
 
 //init app
