@@ -9,5 +9,19 @@
     "dev": "nodemon app.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.5",
+    "babel-preset-env": "^1.7.0",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "events": "^3.0.0",
+    "express": "^4.16.4",
+    "jquery": "^3.3.1",
+    "jsdom": "^13.1.0"
+  },
+  "devDependencies": {
+    "webpack": "^4.28.4"
+  }
 }
