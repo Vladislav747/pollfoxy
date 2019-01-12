@@ -6,3 +6,6 @@
 Для хранения данных используется онлайн база данных Mongo в MLab.
 
 Предварительно создается Model Schema - Vote
+
+
+Доступно на https://pollfoxy.herokuapp.com/
