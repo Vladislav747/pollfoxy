@@ -3,8 +3,8 @@
 const form = document.getElementById('vote-form');
 var event;
 
-const uri = 'http://localhost:3000/poll';
-
+//const uri = 'http://localhost:3000/poll';
+const uri = 'https://pollfoxy.herokuapp.com/poll';
 
 
 //Создаем слушателя события формы.
@@ -133,6 +133,11 @@ form.addEventListener('submit', (e) => {
         })
         .catch(err => console.log(err));
 
+
+//Так как мы работаем и с локальной и с интернетом то нужно проверять страницу на предмет запроса
+        function checkUri(){
+            var request = new XMLHttpRequest();    
+        }
 
 
 
