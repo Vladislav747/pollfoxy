@@ -9,7 +9,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch via NPM",
-            "program": "${workspaceFolder}/public/main.js"
+            "program": "${workspaceFolder}/app.js"
         },
         {
             "type": "chrome",

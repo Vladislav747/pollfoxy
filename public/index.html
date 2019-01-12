@@ -12,12 +12,12 @@
 </head>
 
 <body>
-    <div id="canvas">
+    <!-- <div id="canvas">
         <canvas id="myCanvas" width="200" height="100"></canvas>
-    </div>
+    </div> -->
     <div id="container">
         <h1>Vote Please</h1>
-        <p>Vote for your favourite person</p>
+        <p>Vote for your favourite Computer OS</p>
         <form id="vote-form">
             <p>
                 <label>
@@ -31,16 +31,16 @@
                     <span>Macos</span>
                 </label>
             </p>
-            <input type="submit" value="Vote" class="btn">
+            <input type="submit" value="Vote" class="btn" />
 
         </form>
         <div id="chartContainer">
 
         </div>
-
-
+        Всего голосов<p id="chartTitle"></p>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pusher/4.2.2/pusher.min.js"></script>
     <!-- Jquery JavaScript Library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- Materialize Compiled and minified JavaScript -->
@@ -74,7 +74,7 @@
 
 
         //Генерация события
-        $(document).on('os_vote',function(event, param){
+        /*$(document).on('os_vote',function(event, param){
             console.log(param.type);
         switch(param.type){
             case 'os-mac':
@@ -87,13 +87,13 @@
             console.log("Событие не дошло");
             break;
         }
-    });
-
+    }); */
+/*
  $(document).trigger('os_vote',{
         type: 'os-mac',    
       });
 
-  
+  */
     </script>
 
 

@@ -6,6 +6,9 @@ const bodyParser = require('body-parser');
 //CORS headers
 const cors = require('cors');
 
+//DB Config with Mongoose
+require('./config/db');
+
 //init app
 const app = express();
 

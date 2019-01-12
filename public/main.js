@@ -1,5 +1,7 @@
-const form = document.getElementById('vote-form');
+//Client Mode
 
+const form = document.getElementById('vote-form');
+var event;
 
 const uri = 'http://localhost:3000/poll';
 
@@ -14,7 +16,7 @@ form.addEventListener('submit', (e) => {
     const data = { os: choice };
 
 
-    //Получение XMLHttpRequest
+    //Создание XMLHttpRequest post
     fetch(uri, {
         method: 'post',
         body: JSON.stringify(data),
@@ -31,62 +33,137 @@ form.addEventListener('submit', (e) => {
 });
 
 
-//Получение XMLHttpRequest
-fetch(uri, {
-    method: 'get',
-    body: JSON.stringify(data),
-    headers: new Headers({
-        'Content-Type': 'application/json'
-    }),
-}).then(res => res.json())
-.then(data => console.log(data))
-.catch(err => console.log(err));
-    //Тут выводим в консоль результат выбора
-    
 
 
 
+    //Создание XMLHttpRequest запросом get 
+    fetch(uri)
+        .then(res => res.json())
+        .then(data => {
+
+            //Получаем голоса при запросе get
+            let votes = data.votes;
+            //Так как мы получаем массив данных то нам нужно посчитать количество проголосоваших
+            let totalVotes = votes.length;
+            document.querySelector('#chartTitle').textContent = `Total Votes: ${totalVotes}`;
 
 
-//***************************** CanvasJS*******************************/
+            //***************************** CanvasJS*******************************/
 
-//Изначальные точки графика
-let dataPoints = [
-    { label: 'Windows', y: 0 },
-    { label: 'MacOs', y: 0 },
-];
-
-//Поле внизу выборы
-const chartContainer = document.querySelector('#chartContainer');
-
-if (chartContainer) {
-    const chart = new CanvasJS.Chart('chartContainer', {
-        animationEnabled: true,
-        theme: 'theme1',
-        title: {
-            text: 'OS results'
-        },
-        data: [
-            {
-                type: 'column',
-                dataPoints: dataPoints
+            let voteCounts = {
+                Windows: 0,
+                Macos: 0,
             }
-        ]
-    });
 
-    
-    function ChangeChart(osvote) {
-        dataPoints = dataPoints.map(x => {
-            //Вытаскиваем название label из dataPoints
-            if (x.label == osvote) {
-                //x.y += data.points;
-                x.y += 1;
-                return x;
-            } else {
-                return x;
+            //Преобразование массива 
+            //acc[vote.os] - аккумуляция голосов 
+            //если в переменное что то есть то мы берем это если нет то ноль и добавляем из
+            //существуюего массива к нашему нынешнему
+            voteCounts = votes.reduce((acc, vote) => (
+                (acc[vote.os] = (acc[vote.os] || 0) + parseInt(vote.point)), acc),
+                {}
+            );
+
+
+            //Изначальные точки графика
+            let dataPoints = [
+                { label: 'Windows', y: voteCounts.Windows },
+                { label: 'Macos', y: voteCounts.Macos },
+            ];
+
+
+
+            //Поле внизу выборы
+            const chartContainer = document.querySelector('#chartContainer');
+
+            if (chartContainer) {
+
+                // Listen for the event.
+                document.addEventListener('votesAdded', function (e) {
+                    document.querySelector('#chartTitle').textContent = `Total Votes: ${e.detail.totalVotes}`;
+                });
+
+
+                /*Изначально без дошедшего события создается график - пока просто пустой график*/
+                const chart = new CanvasJS.Chart('chartContainer', {
+                    animationEnabled: true,
+                    theme: 'theme1',
+                    title: {
+                        text: 'OS results'
+                    },
+                    data: [
+                        {
+                            type: 'column',
+                            dataPoints: dataPoints,
+                        }
+
+                    ]
+                });
+                chart.render();
+
+                // Enable pusher logging - don't include this in production
+                Pusher.logToConsole = true;
+
+                var pusher = new Pusher('77eadd41f0797f105b75', {
+                    cluster: 'ap2',
+                    forceTLS: true
+                });
+
+
+                var channel = pusher.subscribe('os-poll');
+                channel.bind('os-vote', function (data) {
+                    //Точки графика 
+                    dataPoints.forEach((point) => {
+                        if (point.label == data.os) {
+                            point.y += data.point;
+                            totalVotes += data.point;
+                            event = new CustomEvent('votesAdded', { detail: { totalVotes: totalVotes } });
+                            // Dispatch the event.
+                            document.dispatchEvent(event);
+                        }
+                    });
+                    chart.render();
+
+
+                });
+
+
+
             }
-        });
-    }
-    ChangeChart("MacOs");
-    chart.render();
-}
+        })
+        .catch(err => console.log(err));
+
+
+
+
+    //$(document).on()
+    // document.addEventListener('os-polla', function (data) {
+    //     alert(data);
+    // });
+
+
+
+
+
+
+
+
+
+
+
+    // document.addEventListener('os-poll', function (osvote) {
+    //     dataPoints = dataPoints.map(x => {
+    //         //Вытаскиваем название label из dataPoints
+    //         if (x.label == osvote) {
+    //             //x.y += data.points;
+    //             x.y += data.point;
+    //             totalVotes += data.point;
+    //             event = new CustomEvent('votesAdded', { detail: { totalVotes: totalVotes } });
+    //             // Dispatch the event.
+    //             document.dispatchEvent(event);
+    //         }
+    //     });
+
+
+
+    // });
