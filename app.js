@@ -18,11 +18,6 @@ const poll = require('./routes/poll');
 //set public folder
 app.use(express.static(path.join(__dirname,'public')))
 
-
-
-
-
-
 // Body parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -30,13 +25,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 //Enable cors
 app.use(cors());
 
-
 //при запросе index/poll мы идем на /routes/poll.js
 app.use('/poll', poll);
 
 // Define port
 const port = process.env.PORT || 3000;
-
 
 // Start server
 app.listen(port, () => console.log(`Server started on port ${port}`));
@@ -48,17 +41,6 @@ app.listen(port, () => console.log(`Server started on port ${port}`));
 app.get('/', (req, res) => {
     res.render('index');
   });
-
-  // nexmo.message.sendSms(
-  //   '79123295460', '7912435643', 'Text', {type: 'Unicode'},
-  //   (err, responseData) => {
-  //     if(err){
-  //       console.log(err);
-  //     } else {
-  //       console.dir(err);
-  //     }
-  //   }
-  // );
 
 //catch form submit
   app.post('/',  (req, res) => {
