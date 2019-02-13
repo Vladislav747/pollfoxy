@@ -9,11 +9,11 @@ const cors = require('cors');
 //DB Config with Mongoose
 require('./config/db');
 
+//Poll methods
+const poll = require('./api/poll');
+
 //init app
 const app = express();
-
-//route in routes
-const poll = require('./routes/poll');
 
 //set public folder
 app.use(express.static(path.join(__dirname,'public')))
@@ -33,19 +33,8 @@ const port = process.env.PORT || 3000;
 
 // Start server
 app.listen(port, () => console.log(`Server started on port ${port}`));
-//Experiment - socket.io doesn't work
-//const server1 = app.listen(port);
 
-// Index route
-//We define a route handler / that gets called when we hit our website home.
-app.get('/', (req, res) => {
-    res.render('index');
-  });
 
-//catch form submit
-  app.post('/',  (req, res) => {
-    // res.send(req.body);
-    console.log(req.body, "Из App.js");
-    const number = req.body.number;
-    const text = req.body.text;
-  });
+//Routing in another file
+require('./api/routing.js')(app);
+
