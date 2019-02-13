@@ -7,14 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- Materialize CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="css/index.css">
     <title>Vote App</title>
 </head>
 
 <body>
-    <!-- <div id="canvas">
-        <canvas id="myCanvas" width="200" height="100"></canvas>
-    </div> -->
+    
     <div id="container">
         <h1>Vote Please</h1>
         <p>Vote for your favourite Computer OS</p>
@@ -49,7 +47,7 @@
     <!-- Canvas JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.js"></script>
 
-    <script src="main.js"></script>
+    <script src="js/main.js"></script>
     <script>
         var c = document.getElementById("myCanvas");
         var ctx = c.getContext("2d");
@@ -59,41 +57,7 @@
         ctx.stroke();
         c.style.backgroundColor = "red";
 
-//Сначала создается слушатель а событие генерируется потом
 
-        // document.addEventListener("name-of-event", function (e) {
-        //     console.log(e); // Prints "Example of an event"
-        // });
-
-
-        // // Create the event
-        // var event = new CustomEvent("name-of-event", { "detail": "Example of an event" });
-
-        // // Dispatch/Trigger/Fire the event
-        // document.dispatchEvent(event);
-
-
-        //Генерация события
-        /*$(document).on('os_vote',function(event, param){
-            console.log(param.type);
-        switch(param.type){
-            case 'os-mac':
-            console.log('Mac + 1 point');
-            break;        
-            case 'os-windows':
-            console.log('Windows + 1 point');
-            break;
-            default:            
-            console.log("Событие не дошло");
-            break;
-        }
-    }); */
-/*
- $(document).trigger('os_vote',{
-        type: 'os-mac',    
-      });
-
-  */
     </script>
 
 

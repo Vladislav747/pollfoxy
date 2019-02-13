@@ -3,6 +3,19 @@
 const form = document.getElementById('vote-form');
 var event;
 
+
+//Так как мы работаем и с локальной и с интернетом то нужно проверять где мы сейчас находимся
+function checkUri(UrlForCheck) {
+    if (UrlForCheck === "localhost:3000") {
+        uriCorrect = "http://localhost:3000/poll";
+        return uriCorrect;
+    } else if (UrlForCheck === "pollfoxy.herokuapp.com") {
+        uriCorrect = "https://pollfoxy.herokuapp.com/poll";
+        return uriCorrect;
+    }
+}
+
+
 const uri = checkUri(window.location.host);
 
 
@@ -133,47 +146,7 @@ fetch(uri)
     .catch(err => console.log(err));
 
 
-//Так как мы работаем и с локальной и с интернетом то нужно проверять где мы сейчас находимся
-function checkUri(UrlForCheck) {
-    if (UrlForCheck === "localhost:3000") {
-        uriCorrect = "http://localhost:3000/poll";
-        return uriCorrect;
-    } else if (UrlForCheck === "pollfoxy.herokuapp.com") {
-        uriCorrect = "https://pollfoxy.herokuapp.com/poll";
-        return uriCorrect;
-    }
-}
 
 
 
-    //$(document).on()
-    // document.addEventListener('os-polla', function (data) {
-    //     alert(data);
-    // });
-
-
-
-
-
-
-
-
-
-
-
-    // document.addEventListener('os-poll', function (osvote) {
-    //     dataPoints = dataPoints.map(x => {
-    //         //Вытаскиваем название label из dataPoints
-    //         if (x.label == osvote) {
-    //             //x.y += data.points;
-    //             x.y += data.point;
-    //             totalVotes += data.point;
-    //             event = new CustomEvent('votesAdded', { detail: { totalVotes: totalVotes } });
-    //             // Dispatch the event.
-    //             document.dispatchEvent(event);
-    //         }
-    //     });
-
-
-
-    // });
+    

@@ -9,7 +9,7 @@ const VoteSchema = new Schema({
     required: true
   },
   point: {
-    type: String,
+    type: Number,
     required: true
   }
 });
