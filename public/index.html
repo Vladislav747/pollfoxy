@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- Materialize CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="css/index.css">
     <title>Vote App</title>
 </head>
 
@@ -32,7 +32,7 @@
                 </label>
             </p>
             <input type="submit" value="Vote" class="btn" />
-
+            <input type="button" value="Clear" class="btn" id="clearBtn"/>
         </form>
         <div id="chartContainer">
 
@@ -49,7 +49,7 @@
     <!-- Canvas JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.js"></script>
 
-    <script src="main.js"></script>
+    <script src="js/main.js"></script>
     <script>
         var c = document.getElementById("myCanvas");
         var ctx = c.getContext("2d");

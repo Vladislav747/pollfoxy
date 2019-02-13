@@ -2,7 +2,7 @@
 
 const form = document.getElementById('vote-form');
 var event;
-
+var clearBtn = document.getElementById('clearBtn');
 
 //Так как мы работаем и с локальной и с интернетом то нужно проверять где мы сейчас находимся
 function checkUri(UrlForCheck) {
@@ -15,7 +15,6 @@ function checkUri(UrlForCheck) {
     }
 }
 
-
 //Создание XMLHttpRequest запросом get 
 function getVotes(uri) {
     fetch(uri)
@@ -27,7 +26,6 @@ function getVotes(uri) {
             //Так как мы получаем массив данных то нам нужно посчитать количество проголосоваших
             let totalVotes = votes.length;
             document.querySelector('#chartTitle').textContent = `Total Votes: ${totalVotes}`;
-
 
             //***************************** CanvasJS*******************************/
 
@@ -45,14 +43,11 @@ function getVotes(uri) {
                 {}
             );
 
-
             //Изначальные точки графика
             let dataPoints = [
                 { label: 'Windows', y: voteCounts.Windows },
                 { label: 'Macos', y: voteCounts.Macos },
             ];
-
-
 
             //Поле внизу выборы
             const chartContainer = document.querySelector('#chartContainer');
@@ -92,6 +87,7 @@ function getVotes(uri) {
 
 
                 var channel = pusher.subscribe('os-poll');
+
                 channel.bind('os-vote', function (data) {
                     //Точки графика 
                     dataPoints.forEach((point) => {
@@ -104,12 +100,7 @@ function getVotes(uri) {
                         }
                     });
                     chart.render();
-
-
                 });
-
-
-
             }
         })
         .catch(err => console.log(err));
@@ -141,6 +132,22 @@ form.addEventListener('submit', (e) => {
         .catch(err => console.log(err));
 
     e.preventDefault();
+});
+
+
+clearBtn.addEventListener('click', (e) => {
+
+ //Отправляю запрос на удаление
+ fetch(uri+'/delete', {
+    method: 'get',
+})
+    //Тут выводим в консоль результат выбора
+    .then(res => res.json())
+    .then(data => console.log(data))
+    .catch(err => console.log(err));
+
+e.preventDefault();
+    
 });
 
 getVotes(uri);
