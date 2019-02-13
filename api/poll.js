@@ -1,7 +1,4 @@
 //Server Mode (Backend)
-/*
-TODO: К сожалению невозможно выполнять вызов событий в node.js привычным способ через trigger
-*/
 var jsdom = require('jsdom');
 $ = require('jquery')(new jsdom.JSDOM().window);
 
@@ -35,11 +32,8 @@ router.get('/', (req, res) => {
     
 });
 
-
-
 //Если запрос уходит методом POST
 router.post('/', (req, res) => {
-
 
     const newVote = {
         os: req.body.os,
@@ -55,23 +49,16 @@ router.post('/', (req, res) => {
             os: req.body.os,
         });
 
-
     });
   
     console.log(req.body, "Наш запрос");
 
-    // $('body').trigger('os-polla', {
-    //     data: 1
-    // });
-
-
+    
     //Генерируем событие с помощью метода emit
     // eventEmitter.emit('os-polla','a', 'b');
     return res.json({ success: true, message: "Спасибо ответ дошел" });
 
 
 });
-
-
 
 module.exports = router;
