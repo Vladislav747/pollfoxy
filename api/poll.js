@@ -4,6 +4,7 @@ TODO: К сожалению невозможно выполнять вызов �
 */
 var jsdom = require('jsdom');
 $ = require('jquery')(new jsdom.JSDOM().window);
+require('../config/arrayofOsX');
 
 const keys = require('../config/keys');
 var events = require('events');
@@ -16,6 +17,8 @@ const router = express.Router();
 //Наша модель mongoose
 const Vote = require('../models/Vote');
 const Pusher = require('pusher');
+
+
 
 var pusher = new Pusher({
     appId: keys.pusherAppId,
@@ -39,7 +42,12 @@ router.get('/delete', (req, res) => {
     //Находим нашу модель Данных с помощью метода find();
     Vote.deleteMany().then( () => res.json({ success: true, delete: true }));
    
-
+    // //генерируем событие для удаления координат
+    // pusher.trigger('os-poll', 'os-delete-votes', {
+    //     //point не делаю +1 так как он возвращает и прошлое количество то же по каждой операционке
+    //     point: 0,
+    //     os: Macos,
+    // })
 
 });
 

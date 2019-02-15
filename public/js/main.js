@@ -37,7 +37,7 @@ function getVotes(uri) {
             //Преобразование массива 
             //acc[vote.os] - аккумуляция голосов 
             //если в переменное что то есть то мы берем это если нет то ноль и добавляем из
-            //существуюего массива к нашему нынешнему
+            //существующего массива к нашему нынешнему
             voteCounts = votes.reduce((acc, vote) => (
                 (acc[vote.os] = (acc[vote.os] || 0) + parseInt(vote.point)), acc),
                 {}
@@ -131,7 +131,12 @@ form.addEventListener('submit', (e) => {
         .then(data => console.log(data))
         .catch(err => console.log(err));
 
+
+        getVotes(uri);
+
     e.preventDefault();
+
+
 });
 
 
@@ -147,7 +152,48 @@ clearBtn.addEventListener('click', (e) => {
     .catch(err => console.log(err));
 
 e.preventDefault();
-    
+    //***************************** CanvasJS*******************************/
+
+    let voteCounts = {
+        Windows: 0,
+        Macos: 0,
+    }
+
+
+    //Изначальные точки графика
+    let dataPoints = [
+        { label: 'Windows', y: voteCounts.Windows },
+        { label: 'Macos', y: voteCounts.Macos },
+    ];
+
+    //Поле внизу выборы
+    const chartContainer = document.querySelector('#chartContainer');
+
+    if (chartContainer) {
+
+        // Listen for the event.
+        document.addEventListener('votesAdded', function (e) {
+            document.querySelector('#chartTitle').textContent = `Total Votes: ${e.detail.totalVotes}`;
+        });
+
+
+        /*Изначально без дошедшего события создается график - пока просто пустой график*/
+        const chart = new CanvasJS.Chart('chartContainer', {
+            animationEnabled: true,
+            theme: 'theme1',
+            title: {
+                text: 'OS results'
+            },
+            data: [
+                {
+                    type: 'column',
+                    dataPoints: dataPoints,
+                }
+
+            ]
+        });
+        chart.render();
+}
 });
 
 getVotes(uri);
