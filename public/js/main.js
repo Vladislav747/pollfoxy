@@ -2,11 +2,7 @@
 
 const form = document.getElementById('vote-form');
 var event;
-<<<<<<< HEAD
-
-=======
 var clearBtn = document.getElementById('clearBtn');
->>>>>>> development
 
 //Так как мы работаем и с локальной и с интернетом то нужно проверять где мы сейчас находимся
 function checkUri(UrlForCheck) {
@@ -19,10 +15,6 @@ function checkUri(UrlForCheck) {
     }
 }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> development
 //Создание XMLHttpRequest запросом get 
 function getVotes(uri) {
     fetch(uri)
@@ -35,10 +27,6 @@ function getVotes(uri) {
             let totalVotes = votes.length;
             document.querySelector('#chartTitle').textContent = `Total Votes: ${totalVotes}`;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> development
             //***************************** CanvasJS*******************************/
 
             let voteCounts = {
@@ -49,31 +37,18 @@ function getVotes(uri) {
             //Преобразование массива 
             //acc[vote.os] - аккумуляция голосов 
             //если в переменное что то есть то мы берем это если нет то ноль и добавляем из
-<<<<<<< HEAD
-            //существуюего массива к нашему нынешнему
-=======
             //существующего массива к нашему нынешнему
->>>>>>> development
             voteCounts = votes.reduce((acc, vote) => (
                 (acc[vote.os] = (acc[vote.os] || 0) + parseInt(vote.point)), acc),
                 {}
             );
 
-<<<<<<< HEAD
-
-=======
->>>>>>> development
             //Изначальные точки графика
             let dataPoints = [
                 { label: 'Windows', y: voteCounts.Windows },
                 { label: 'Macos', y: voteCounts.Macos },
             ];
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> development
             //Поле внизу выборы
             const chartContainer = document.querySelector('#chartContainer');
 
@@ -112,10 +87,6 @@ function getVotes(uri) {
 
 
                 var channel = pusher.subscribe('os-poll');
-<<<<<<< HEAD
-=======
-
->>>>>>> development
                 channel.bind('os-vote', function (data) {
                     //Точки графика 
                     dataPoints.forEach((point) => {
@@ -128,16 +99,7 @@ function getVotes(uri) {
                         }
                     });
                     chart.render();
-<<<<<<< HEAD
-
-
                 });
-
-
-
-=======
-                });
->>>>>>> development
             }
         })
         .catch(err => console.log(err));
