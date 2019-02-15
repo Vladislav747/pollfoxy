@@ -1,6 +1,7 @@
 //Server Mode (Backend)
 var jsdom = require('jsdom');
 $ = require('jquery')(new jsdom.JSDOM().window);
+require('../config/arrayofOsX');
 
 const keys = require('../config/keys');
 var events = require('events');
@@ -15,6 +16,7 @@ const Vote = require('../models/Vote');
 const Pusher = require('pusher');
 
 
+
 var pusher = new Pusher({
     appId: keys.pusherAppId,
     key: keys.pusherKey,
@@ -25,12 +27,20 @@ var pusher = new Pusher({
 
 //Если запрос уходит методом GET
 router.get('/', (req, res) => {
-    // res.send('POLL');
-   
+    
     //Находим нашу модель Данных с помощью метода find();
     Vote.find().then(votes => res.json({ success: true, votes: votes }));
     
 });
+
+//Если запрос уходит методом GET
+router.get('/delete', (req, res) => {
+    
+    //Находим нашу модель Данных с помощью метода find();
+    Vote.deleteMany().then( () => res.json({ success: true, delete: true }));
+
+});
+
 
 //Если запрос уходит методом POST
 router.post('/', (req, res) => {

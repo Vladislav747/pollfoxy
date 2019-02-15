@@ -34,7 +34,6 @@ const port = process.env.PORT || 3000;
 // Start server
 app.listen(port, () => console.log(`Server started on port ${port}`));
 
-
 //Routing in another file
 require('./api/routing.js')(app);
 

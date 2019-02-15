@@ -2,7 +2,11 @@
 
 const form = document.getElementById('vote-form');
 var event;
+<<<<<<< HEAD
 
+=======
+var clearBtn = document.getElementById('clearBtn');
+>>>>>>> development
 
 //Так как мы работаем и с локальной и с интернетом то нужно проверять где мы сейчас находимся
 function checkUri(UrlForCheck) {
@@ -15,7 +19,10 @@ function checkUri(UrlForCheck) {
     }
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> development
 //Создание XMLHttpRequest запросом get 
 function getVotes(uri) {
     fetch(uri)
@@ -28,7 +35,10 @@ function getVotes(uri) {
             let totalVotes = votes.length;
             document.querySelector('#chartTitle').textContent = `Total Votes: ${totalVotes}`;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> development
             //***************************** CanvasJS*******************************/
 
             let voteCounts = {
@@ -39,21 +49,31 @@ function getVotes(uri) {
             //Преобразование массива 
             //acc[vote.os] - аккумуляция голосов 
             //если в переменное что то есть то мы берем это если нет то ноль и добавляем из
+<<<<<<< HEAD
             //существуюего массива к нашему нынешнему
+=======
+            //существующего массива к нашему нынешнему
+>>>>>>> development
             voteCounts = votes.reduce((acc, vote) => (
                 (acc[vote.os] = (acc[vote.os] || 0) + parseInt(vote.point)), acc),
                 {}
             );
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> development
             //Изначальные точки графика
             let dataPoints = [
                 { label: 'Windows', y: voteCounts.Windows },
                 { label: 'Macos', y: voteCounts.Macos },
             ];
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> development
             //Поле внизу выборы
             const chartContainer = document.querySelector('#chartContainer');
 
@@ -92,6 +112,10 @@ function getVotes(uri) {
 
 
                 var channel = pusher.subscribe('os-poll');
+<<<<<<< HEAD
+=======
+
+>>>>>>> development
                 channel.bind('os-vote', function (data) {
                     //Точки графика 
                     dataPoints.forEach((point) => {
@@ -104,12 +128,16 @@ function getVotes(uri) {
                         }
                     });
                     chart.render();
+<<<<<<< HEAD
 
 
                 });
 
 
 
+=======
+                });
+>>>>>>> development
             }
         })
         .catch(err => console.log(err));
@@ -140,7 +168,67 @@ form.addEventListener('submit', (e) => {
         .then(data => console.log(data))
         .catch(err => console.log(err));
 
+        getVotes(uri);
+
     e.preventDefault();
+
+});
+
+
+clearBtn.addEventListener('click', (e) => {
+
+ //Отправляю запрос на удаление
+ fetch(uri+'/delete', {
+    method: 'get',
+})
+    //Тут выводим в консоль результат выбора
+    .then(res => res.json())
+    .then(data => console.log(data))
+    .catch(err => console.log(err));
+
+e.preventDefault();
+    //***************************** CanvasJS*******************************/
+
+    let voteCounts = {
+        Windows: 0,
+        Macos: 0,
+    }
+
+
+    //Изначальные точки графика
+    let dataPoints = [
+        { label: 'Windows', y: voteCounts.Windows },
+        { label: 'Macos', y: voteCounts.Macos },
+    ];
+
+    //Поле внизу выборы
+    const chartContainer = document.querySelector('#chartContainer');
+
+    if (chartContainer) {
+
+        // Listen for the event.
+        document.addEventListener('votesAdded', function (e) {
+            document.querySelector('#chartTitle').textContent = `Total Votes: ${e.detail.totalVotes}`;
+        });
+
+
+        /*Изначально без дошедшего события создается график - пока просто пустой график*/
+        const chart = new CanvasJS.Chart('chartContainer', {
+            animationEnabled: true,
+            theme: 'theme1',
+            title: {
+                text: 'OS results'
+            },
+            data: [
+                {
+                    type: 'column',
+                    dataPoints: dataPoints,
+                }
+
+            ]
+        });
+        chart.render();
+}
 });
 
 getVotes(uri);
