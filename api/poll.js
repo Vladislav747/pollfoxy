@@ -1,7 +1,7 @@
 //Server Mode (Backend)
 var jsdom = require('jsdom');
 $ = require('jquery')(new jsdom.JSDOM().window);
-require('../config/arrayofOsX');
+
 
 const keys = require('../config/keys');
 var events = require('events');

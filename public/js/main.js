@@ -4,16 +4,8 @@ const form = document.getElementById('vote-form');
 var event;
 var clearBtn = document.getElementById('clearBtn');
 
-//Так как мы работаем и с локальной и с интернетом то нужно проверять где мы сейчас находимся
-function checkUri(UrlForCheck) {
-    if (UrlForCheck === "localhost:3000") {
-        uriCorrect = "http://localhost:3000/poll";
-        return uriCorrect;
-    } else if (UrlForCheck === "pollfoxy.herokuapp.com") {
-        uriCorrect = "https://pollfoxy.herokuapp.com/poll";
-        return uriCorrect;
-    }
-}
+
+const uri = window.location.origin+"/poll";
 
 //Создание XMLHttpRequest запросом get 
 function getVotes(uri) {
@@ -104,10 +96,6 @@ function getVotes(uri) {
         })
         .catch(err => console.log(err));
 }
-
-
-const uri = checkUri(window.location.host);
-
 
 //Создаем слушателя события формы.
 //Слушаем событие submit 
