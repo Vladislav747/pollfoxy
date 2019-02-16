@@ -15,6 +15,9 @@ function checkUri(UrlForCheck) {
     }
 }
 
+//const uri = checkUri(window.location.host);
+const uri = window.location.origin+"/poll";
+
 //Создание XMLHttpRequest запросом get 
 function getVotes(uri) {
     fetch(uri)
@@ -105,9 +108,6 @@ function getVotes(uri) {
         })
         .catch(err => console.log(err));
 }
-
-
-const uri = checkUri(window.location.host);
 
 
 //Создаем слушателя события формы.
