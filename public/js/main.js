@@ -31,7 +31,6 @@ function drawCanvasJs(votes, chartContainer, action, totalVotes) {
             { label: 'Macos', y: voteCounts.Macos },
         ];
 
-
         // Listen for the event.
         document.addEventListener('votesAdded', function (e) {
             document.querySelector('#chartTitle').textContent = `${totalVotes}`;
@@ -60,7 +59,6 @@ function drawCanvasJs(votes, chartContainer, action, totalVotes) {
             { label: 'Windows', y: voteCounts.Windows },
             { label: 'Macos', y: voteCounts.Macos },
         ];
-
 
         // Listen for the event.
         document.addEventListener('votesAdded', function (e) {
@@ -108,7 +106,6 @@ function drawCanvasJs(votes, chartContainer, action, totalVotes) {
             forceTLS: true
         });
 
-
         var channel = pusher.subscribe('os-poll');
 
         channel.bind('os-vote', function (data) {
@@ -122,9 +119,6 @@ function drawCanvasJs(votes, chartContainer, action, totalVotes) {
                     document.dispatchEvent(event);
                 }
             });
-
-            
-
 
             chart.render();
         });
@@ -151,9 +145,6 @@ function getVotes(uri) {
             chart = drawCanvasJs(votes, chartContainer, "getVotes", totalVotes);
             chart.render();
 
-           
-            
-            
         })
         .catch(err => console.log(err));
 }
@@ -213,4 +204,4 @@ clearBtn.addEventListener('click', (e) => {
     chart.render();
 });
 
-getVotes(uri);
+document.addEventListener('load',getVotes(uri));
