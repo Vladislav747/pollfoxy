@@ -1,4 +1,3 @@
-
 //Наша модель mongoose
 const Vote = require('../models/Vote');
 
@@ -50,7 +49,10 @@ class PollController {
                     point: parseInt(vote.point),
                     os: req.body.os,
                 });
-                  res.json({ success: true, message: "Спасибо ответ дошел" })
+                //   res.json({ success: true, message: "Спасибо ответ дошел" })
+            }).then(()=>{
+                Vote.find()
+                .then(votes => res.status(200).json({ success: true, votes: votes, message: "Спасибо ответ дошел" }))
             })
            
               

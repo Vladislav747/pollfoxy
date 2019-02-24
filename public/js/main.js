@@ -4,10 +4,6 @@ const form = document.getElementById('vote-form');
 var clearBtn = document.getElementById('clearBtn');
 //Поле внизу выборы
 const chartContainer = document.querySelector('#chartContainer');
-//const uri = checkUri(window.location.host);
-
-
-
 
 const uri = window.location.origin+"/poll";
 
@@ -53,11 +49,9 @@ function drawCanvasJs(votes, chartContainer, action, totalVotes) {
                     type: 'column',
                     dataPoints: dataPoints,
                 }
-
             ]
         });
     return chart;
-
 
     } else if (action == "deleteVotes") {
 
@@ -128,6 +122,10 @@ function drawCanvasJs(votes, chartContainer, action, totalVotes) {
                     document.dispatchEvent(event);
                 }
             });
+
+            
+
+
             chart.render();
         });
 
@@ -146,7 +144,7 @@ function getVotes(uri) {
             let votes = data.votes;
             //Так как мы получаем массив данных то нам нужно посчитать количество проголосоваших
             let totalVotes = votes.length;
-            document.querySelector('#chartTitle').textContent = `Total Votes: ${totalVotes}`;
+            document.querySelector('#chartTitle').textContent = `${totalVotes}`;
 
             //***************************** CanvasJS*******************************/
 
@@ -154,7 +152,7 @@ function getVotes(uri) {
             chart.render();
 
            
-            drawCanvasJs(votes, chartContainer ,"addVotes", totalVotes);
+            
             
         })
         .catch(err => console.log(err));
@@ -178,7 +176,15 @@ form.addEventListener('submit', (e) => {
     })
         //Тут выводим в консоль результат выбора
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => {
+          //Получаем голоса при запросе get
+          let votes = data.votes;
+          //Так как мы получаем массив данных то нам нужно посчитать количество проголосоваших
+          let totalVotes = votes.length;
+          document.querySelector('#chartTitle').textContent = `${totalVotes}`;  
+          drawCanvasJs(votes, chartContainer ,"addVotes", totalVotes);
+        }  
+        )
         .catch(err => console.log(err));
 
 
