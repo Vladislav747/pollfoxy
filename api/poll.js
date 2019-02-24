@@ -4,13 +4,10 @@ $ = require('jquery')(new jsdom.JSDOM().window);
 
 const keys = require('../config/keys');
 
-//Для базы данных MongoDB
-const mongoose = require('mongoose');
 //Объект роутинга
 const express = require('express');
 const router = express.Router();
-//Наша модель mongoose
-const Vote = require('../models/Vote');
+
 const Pusher = require('pusher');
 
 //Контроллер
