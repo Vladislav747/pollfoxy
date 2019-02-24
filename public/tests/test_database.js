@@ -5,7 +5,8 @@ it('should return select of users', async () => {
     const user = await myTestsHelper.factories.createSomeUser();
   
     // вызываю тестируемый эндпоинт
-    await request.post(`/users/$(user.id)/item`)
+    // await request.get(`/users/$(user.id)/item`)
+    await request.get(`/poll`)
     .expect(200);
     
   })
