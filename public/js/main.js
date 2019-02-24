@@ -5,13 +5,13 @@ var clearBtn = document.getElementById('clearBtn');
 //Поле внизу выборы
 const chartContainer = document.querySelector('#chartContainer');
 //const uri = checkUri(window.location.host);
-const uri = window.location.origin + "/poll";
+
 
 
 
 const uri = window.location.origin+"/poll";
 
-function drawCanvasJs(votes, chartContainer, action) {
+function drawCanvasJs(votes, chartContainer, action, totalVotes) {
 
     let voteCounts = {
         Windows: 0,
@@ -91,6 +91,46 @@ function drawCanvasJs(votes, chartContainer, action) {
 
         return chart;
 
+    } else if (action == "addVotes"){
+
+        //Преобразование массива 
+        //acc[vote.os] - аккумуляция голосов 
+        //если в переменное что то есть то мы берем это если нет то ноль и добавляем из
+        //существующего массива к нашему нынешнему
+        voteCounts = votes.reduce((acc, vote) => (
+            (acc[vote.os] = (acc[vote.os] || 0) + parseInt(vote.point)), acc),
+            {}
+        );
+
+        // //Изначальные точки графика
+        let dataPoints = [
+            { label: 'Windows', y: voteCounts.Windows },
+            { label: 'Macos', y: voteCounts.Macos },
+        ];
+
+
+        var pusher = new Pusher('77eadd41f0797f105b75', {
+            cluster: 'ap2',
+            forceTLS: true
+        });
+
+
+        var channel = pusher.subscribe('os-poll');
+
+        channel.bind('os-vote', function (data) {
+            //Точки графика 
+            dataPoints.forEach((point) => {
+                if (point.label == data.os) {
+                    point.y += data.point;
+                    totalVotes += data.point;
+                    event = new CustomEvent('votesAdded', { detail: { totalVotes: totalVotes } });
+                    // Dispatch the event.
+                    document.dispatchEvent(event);
+                }
+            });
+            chart.render();
+        });
+
     }
 
 }
@@ -110,33 +150,12 @@ function getVotes(uri) {
 
             //***************************** CanvasJS*******************************/
 
-            chart = drawCanvasJs(votes, chartContainer, "getVotes");
+            chart = drawCanvasJs(votes, chartContainer, "getVotes", totalVotes);
             chart.render();
 
-            // Enable pusher logging - don't include this in production
-            Pusher.logToConsole = true;
-
-            var pusher = new Pusher('77eadd41f0797f105b75', {
-                cluster: 'ap2',
-                forceTLS: true
-            });
-
-
-            var channel = pusher.subscribe('os-poll');
-
-            channel.bind('os-vote', function (data) {
-                //Точки графика 
-                dataPoints.forEach((point) => {
-                    if (point.label == data.os) {
-                        point.y += data.point;
-                        totalVotes += data.point;
-                        event = new CustomEvent('votesAdded', { detail: { totalVotes: totalVotes } });
-                        // Dispatch the event.
-                        document.dispatchEvent(event);
-                    }
-                });
-                chart.render();
-            });
+           
+            drawCanvasJs(votes, chartContainer ,"addVotes", totalVotes);
+            
         })
         .catch(err => console.log(err));
 }

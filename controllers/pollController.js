@@ -16,9 +16,7 @@ class PollController {
             .then(votes => res.status(200).json({ success: true, votes: votes }))
             .catch(err => {
                 console.log(err);
-                res.status(404).json({
-                    error: "Ошибка в методе получения данных"
-                });
+                throw new Error("Ошибка в методе удаления данных", e);
             });
     }
 
@@ -28,13 +26,11 @@ class PollController {
             .then(() => res.status(200).json({ success: true, delete: true, message: "All Votes were deleted", votes: 0 }))
             .catch(err => {
                 console.log(err);
-                res.status(404).json({
-                    error: "Ошибка в методе удаления данных"
-                });
+                throw new Error("Ошибка в методе удаления данных", e);
             });
     }
 
-    addVote(req, res) {
+    addVote(req, res, pusher) {
         this.res = res;
         this.req = req;
 
@@ -54,12 +50,19 @@ class PollController {
                     point: parseInt(vote.point),
                     os: req.body.os,
                 });
+                  res.json({ success: true, message: "Спасибо ответ дошел" })
             })
-            .then(() =>
-                res.status(200).json({ success: true, message: "Спасибо ответ дошел" }))
-            .catch(err => res.status(404).json({
-                error: "Ошибка в методе удаления данных"
-            }))
+           
+              
+            .catch(e => {
+                if (e.name == 'URIError') {
+                    throw new ReadError("Ошибка в URI", e);
+                  } else if (e.name == 'SyntaxError') {
+                    throw new ReadError("Синтаксическая ошибка в данных", e);
+                  } else {
+                    throw e; // пробрасываем
+                  } 
+    })
     }
 
 }

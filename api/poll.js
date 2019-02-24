@@ -42,7 +42,7 @@ router.delete('/delete', (req, res) => {
 
 //Если запрос уходит методом POST
 router.post('/', (req, res) => {
-    res = pollController.addVote(req, res)
+    res = pollController.addVote(req, res, pusher)
     return res;
 });
 
