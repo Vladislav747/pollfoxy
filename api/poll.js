@@ -4,11 +4,9 @@ TODO: К сожалению невозможно выполнять вызов �
 */
 var jsdom = require('jsdom');
 $ = require('jquery')(new jsdom.JSDOM().window);
-require('../config/arrayofOsX');
 
 const keys = require('../config/keys');
-var events = require('events');
-const eventEmitter = new events.EventEmitter();
+
 //Для базы данных MongoDB
 const mongoose = require('mongoose');
 //Объект роутинга
@@ -18,7 +16,9 @@ const router = express.Router();
 const Vote = require('../models/Vote');
 const Pusher = require('pusher');
 
-
+//Контроллер
+var PollController = require('../controllers/pollController');
+var pollController = new PollController();
 
 var pusher = new Pusher({
     appId: keys.pusherAppId,
@@ -30,63 +30,24 @@ var pusher = new Pusher({
 
 //Если запрос уходит методом GET
 router.get('/', (req, res) => {
-    
-    //Находим нашу модель Данных с помощью метода find();
-    Vote.find().then(votes => res.json({ success: true, votes: votes }));
-    
+    res = pollController.list(res);
+    return res;
 });
 
 //Если запрос уходит методом GET
-router.get('/delete', (req, res) => {
-    
-    //Находим нашу модель Данных с помощью метода find();
-    Vote.deleteMany().then( () => res.json({ success: true, delete: true }));
-   
-    // //генерируем событие для удаления координат
-    // pusher.trigger('os-poll', 'os-delete-votes', {
-    //     //point не делаю +1 так как он возвращает и прошлое количество то же по каждой операционке
-    //     point: 0,
-    //     os: Macos,
-    // })
+router.delete('/delete', (req, res) => {
+
+    //Удаление данных
+    res = pollController.deleteAll(res);
+    return res;
 
 });
 
 
 //Если запрос уходит методом POST
 router.post('/', (req, res) => {
-
-
-    const newVote = {
-        os: req.body.os,
-        point: 1,
-    };
-
-    //в нашу модель Vote сохраняем данные newVote согласно схеме данных
-    new Vote(newVote).save().then(vote => {
-        //Генерируем событие os-vote с каналом os-poll на весь документ с обновлением графика
-        pusher.trigger('os-poll', 'os-vote', {
-            //point не делаю +1 так как он возвращает и прошлое количество то же по каждой операционке
-            point: parseInt(vote.point),
-            os: req.body.os,
-        });
-
-
-    });
-  
-    console.log(req.body, "Наш запрос");
-
-    // $('body').trigger('os-polla', {
-    //     data: 1
-    // });
-
-
-    //Генерируем событие с помощью метода emit
-    // eventEmitter.emit('os-polla','a', 'b');
-    return res.json({ success: true, message: "Спасибо ответ дошел" });
-
-
+    res = pollController.addVote(req, res)
+    return res;
 });
-
-
 
 module.exports = router;

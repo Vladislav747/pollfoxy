@@ -8,7 +8,7 @@
     <!-- Materialize CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="css/index.css">
-   
+
     <title>Vote App</title>
 </head>
 
@@ -36,10 +36,13 @@
             <input type="submit" value="Vote" class="btn" />
             <input type="button" value="Clear" class="btn" id="clearBtn" />
         </form>
+        <div id="chartResult">
+                Всего голосов<p id="chartTitle"></p>
+        </div>
         <div id="chartContainer">
 
         </div>
-        Всего голосов<p id="chartTitle"></p>
+        
     </div>
 
 
@@ -55,7 +58,7 @@
     <script src="js/main.js"></script>
     <script src="js/canvas.js"></script>
 
-    
+
 </body>
 
 </html>

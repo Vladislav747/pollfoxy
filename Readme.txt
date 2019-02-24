@@ -12,4 +12,4 @@
 
 
 Первый скрипт package.json -> start -> node app.js
-Запуск тестов mocha public\tests\node_test.js
+Запуск тестов mocha public\tests\node_test.js или npm run test_mocha
