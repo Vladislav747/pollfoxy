@@ -8,12 +8,14 @@
     <!-- Materialize CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="css/index.css">
+
     <title>Vote App</title>
 </head>
 
 <body>
     
     <div id="container">
+
         <h1>Vote Please</h1>
         <p>Vote for your favourite Computer OS</p>
         <form id="vote-form">
@@ -30,13 +32,17 @@
                 </label>
             </p>
             <input type="submit" value="Vote" class="btn" />
-            <input type="button" value="Clear" class="btn" id="clearBtn"/>
+            <input type="button" value="Clear" class="btn" id="clearBtn" />
         </form>
+        <div id="chartResult">
+                Всего голосов<p id="chartTitle"></p>
+        </div>
         <div id="chartContainer">
 
         </div>
-        Всего голосов<p id="chartTitle"></p>
+        
     </div>
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pusher/4.2.2/pusher.min.js"></script>
     <!-- Jquery JavaScript Library -->
@@ -48,17 +54,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.js"></script>
 
     <script src="js/main.js"></script>
-    <script>
-        var c = document.getElementById("myCanvas");
-        var ctx = c.getContext("2d");
-        ctx.beginPath();
-        ctx.arc(95, 50, 40, 0, 2 * Math.PI);
-
-        ctx.stroke();
-        c.style.backgroundColor = "red";
-
-
-    </script>
+    <script src="js/canvas.js"></script>
 
 
 </body>
