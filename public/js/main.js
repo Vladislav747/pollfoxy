@@ -4,15 +4,23 @@ const form = document.getElementById('vote-form');
 var clearBtn = document.getElementById('clearBtn');
 //Поле внизу выборы
 const chartContainer = document.querySelector('#chartContainer');
+//Наш запрос
+const uri = window.location.origin + "/poll";
 
-const uri = window.location.origin+"/poll";
-
+/**
+ * Создает и возвращает объект графика  
+ * 
+ * @param  {array} votes
+ * @param  {object} chartContainer
+ * @param  {string} action
+ * @param  {number} totalVotes
+ */
 function drawCanvasJs(votes, chartContainer, action, totalVotes) {
 
     let voteCounts = {
         Windows: 0,
         Macos: 0,
-    }
+    };
 
     if (action == "getVotes") {
 
@@ -25,7 +33,7 @@ function drawCanvasJs(votes, chartContainer, action, totalVotes) {
             {}
         );
 
-        // //Изначальные точки графика
+        //Изначальные точки графика
         let dataPoints = [
             { label: 'Windows', y: voteCounts.Windows },
             { label: 'Macos', y: voteCounts.Macos },
@@ -36,7 +44,7 @@ function drawCanvasJs(votes, chartContainer, action, totalVotes) {
             document.querySelector('#chartTitle').textContent = `${totalVotes}`;
         });
 
-        /*Изначально без дошедшего события создается график - пока просто пустой график*/
+        //Изначально без дошедшего события создается график - пока просто пустой график
         const chart = new CanvasJS.Chart('chartContainer', {
             animationEnabled: true,
             theme: 'theme1',
@@ -50,7 +58,8 @@ function drawCanvasJs(votes, chartContainer, action, totalVotes) {
                 }
             ]
         });
-    return chart;
+
+        return chart;
 
     } else if (action == "deleteVotes") {
 
@@ -60,12 +69,12 @@ function drawCanvasJs(votes, chartContainer, action, totalVotes) {
             { label: 'Macos', y: voteCounts.Macos },
         ];
 
-        // Listen for the event.
+        //Слушаем событие votesAdded
         document.addEventListener('votesAdded', function (e) {
-        document.querySelector('#chartTitle').textContent = `${totalVotes}`;
+            document.querySelector('#chartTitle').textContent = `${totalVotes}`;
         });
 
-        /*Изначально без дошедшего события создается график - пока просто пустой график*/
+        //Изначально без дошедшего события создается график - пока просто пустой график
         const chart = new CanvasJS.Chart('chartContainer', {
             animationEnabled: true,
             theme: 'theme1',
@@ -83,24 +92,24 @@ function drawCanvasJs(votes, chartContainer, action, totalVotes) {
 
         return chart;
 
-    } else if (action == "addVotes"){
+    } else if (action == "addVotes") {
 
-        //Преобразование массива 
-        //acc[vote.os] - аккумуляция голосов 
-        //если в переменное что то есть то мы берем это если нет то ноль и добавляем из
-        //существующего массива к нашему нынешнему
+        /*Преобразование массива 
+          acc[vote.os] - аккумуляция голосов 
+          если в переменное что то есть то мы берем это если нет то ноль и добавляем из
+          существующего массива к нашему нынешнему*/
         voteCounts = votes.reduce((acc, vote) => (
             (acc[vote.os] = (acc[vote.os] || 0) + parseInt(vote.point)), acc),
             {}
         );
 
-        // //Изначальные точки графика
+        //Изначальные точки графика
         let dataPoints = [
             { label: 'Windows', y: voteCounts.Windows },
             { label: 'Macos', y: voteCounts.Macos },
         ];
 
-
+        //Библиотека Pusher для создания каналов внутри потока
         var pusher = new Pusher('77eadd41f0797f105b75', {
             cluster: 'ap2',
             forceTLS: true
@@ -128,8 +137,13 @@ function drawCanvasJs(votes, chartContainer, action, totalVotes) {
 }
 
 
-//Создание XMLHttpRequest запросом get 
+/**
+ * Создание XMLHttpRequest запросом get 
+ * 
+ * @param  {string} uri
+ */
 function getVotes(uri) {
+
     fetch(uri)
         .then(res => res.json())
         .then(data => {
@@ -149,8 +163,8 @@ function getVotes(uri) {
         .catch(err => console.log(err));
 }
 
-//Создаем слушателя события формы.
-//Слушаем событие submit 
+/*Создаем слушателя события формы.
+Слушаем событие submit*/
 form.addEventListener('submit', (e) => {
 
     const choice = document.querySelector('input[name=os]:checked').value;
@@ -168,16 +182,15 @@ form.addEventListener('submit', (e) => {
         //Тут выводим в консоль результат выбора
         .then(res => res.json())
         .then(data => {
-          //Получаем голоса при запросе get
-          let votes = data.votes;
-          //Так как мы получаем массив данных то нам нужно посчитать количество проголосоваших
-          let totalVotes = votes.length;
-          document.querySelector('#chartTitle').textContent = `${totalVotes}`;  
-          drawCanvasJs(votes, chartContainer ,"addVotes", totalVotes);
-        }  
+            //Получаем голоса при запросе get
+            let votes = data.votes;
+            //Так как мы получаем массив данных то нам нужно посчитать количество проголосоваших
+            let totalVotes = votes.length;
+            document.querySelector('#chartTitle').textContent = `${totalVotes}`;
+            drawCanvasJs(votes, chartContainer, "addVotes", totalVotes);
+        }
         )
         .catch(err => console.log(err));
-
 
     getVotes(uri);
 
@@ -185,6 +198,8 @@ form.addEventListener('submit', (e) => {
 
 });
 
+/*Создаем слушателя события кнопки Clear
+Слушаем событие submit*/
 clearBtn.addEventListener('click', (e) => {
 
     //Отправляю запрос на удаление
@@ -197,6 +212,7 @@ clearBtn.addEventListener('click', (e) => {
         .catch(err => console.log(err));
 
     e.preventDefault();
+
     //***************************** CanvasJS*******************************/
 
     votes = [];
@@ -204,4 +220,4 @@ clearBtn.addEventListener('click', (e) => {
     chart.render();
 });
 
-document.addEventListener('load',getVotes(uri));
+document.addEventListener('load', getVotes(uri));

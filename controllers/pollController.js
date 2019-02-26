@@ -3,7 +3,6 @@ const Vote = require('../models/Vote');
 
 class PollController {
 
-
     /**
      * Get all users
      * 
