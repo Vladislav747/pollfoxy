@@ -3,11 +3,14 @@ const Vote = require('../models/Vote');
 
 class PollController {
 
-    constructor() {
 
-    }
-
-    //Get all users
+    /**
+     * Get all users
+     * 
+     * @param  {object} res
+     * 
+     * @return {object}
+     */
     list(res) {
         this.res = res;
         //Находим нашу модель Данных с помощью метода find();
@@ -19,6 +22,13 @@ class PollController {
             });
     }
 
+    /**
+     * Delete All Users
+     * 
+     * @param  {object} res
+     * 
+     * @return {object}
+     */
     deleteAll(res) {
         this.res = res;
         Vote.deleteMany()
@@ -29,6 +39,14 @@ class PollController {
             });
     }
 
+
+    /**
+     * Add poll to vote app
+     * 
+     * @param  {object} req
+     * @param  {object} res
+     * @param  {object} pusher
+     */
     addVote(req, res, pusher) {
         this.res = res;
         this.req = req;
@@ -49,22 +67,21 @@ class PollController {
                     point: parseInt(vote.point),
                     os: req.body.os,
                 });
-                //   res.json({ success: true, message: "Спасибо ответ дошел" })
-            }).then(()=>{
+
+            }).then(() => {
                 Vote.find()
-                .then(votes => res.status(200).json({ success: true, votes: votes, message: "Спасибо ответ дошел" }))
+                    .then(votes => res.status(200).json({ success: true, votes: votes, message: "Спасибо ответ дошел" }));
             })
-           
-              
+
             .catch(e => {
                 if (e.name == 'URIError') {
                     throw new ReadError("Ошибка в URI", e);
-                  } else if (e.name == 'SyntaxError') {
+                } else if (e.name == 'SyntaxError') {
                     throw new ReadError("Синтаксическая ошибка в данных", e);
-                  } else {
+                } else {
                     throw e; // пробрасываем
-                  } 
-    })
+                }
+            });
     }
 
 }

@@ -30,6 +30,7 @@
     "pusher": "^2.2.0"
   },
   "devDependencies": {
+    "jshint": "^2.10.1",
     "webpack": "^4.28.4"
   }
 }
