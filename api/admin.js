@@ -3,9 +3,7 @@ const express = require('express');
 const app = express();
 const router = express.Router();
 
-//Template operating
-//handlebars
-// set up handlebars view engine
+//Настраиваем Шаблон handlebars
 var handlebars = require('express3-handlebars').create({
   defaultLayout: 'admin',
   helpers: {
