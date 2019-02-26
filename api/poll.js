@@ -4,13 +4,10 @@ $ = require('jquery')(new jsdom.JSDOM().window);
 
 const keys = require('../config/keys');
 
-//Для базы данных MongoDB
-const mongoose = require('mongoose');
 //Объект роутинга
 const express = require('express');
 const router = express.Router();
-//Наша модель mongoose
-const Vote = require('../models/Vote');
+
 const Pusher = require('pusher');
 
 //Контроллер
@@ -42,7 +39,7 @@ router.delete('/delete', (req, res) => {
 
 //Если запрос уходит методом POST
 router.post('/', (req, res) => {
-    res = pollController.addVote(req, res, pusher)
+    res = pollController.addVote(req, res, pusher);
     return res;
 });
 

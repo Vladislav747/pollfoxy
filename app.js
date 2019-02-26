@@ -12,6 +12,7 @@ require('./config/db');
 //Poll methods
 const poll = require('./api/poll');
 
+//Admin methods
 const admin = require('./api/admin');
 
 //init app
@@ -30,6 +31,7 @@ app.use(cors());
 //при запросе index/poll мы идем на /routes/poll.js
 app.use('/poll', poll);
 
+//при запросе index/poll мы идем на /routes/poll.js
 app.use('/admin', admin);
 
 // Define port
