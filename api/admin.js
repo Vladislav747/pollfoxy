@@ -3,15 +3,7 @@ const express = require('express');
 const app = express();
 const router = express.Router();
 
-<<<<<<< HEAD
 //Настриаваем Шаблон handlebars
-=======
-//Контроллер
-var PollController = require('../controllers/pollController');
-var pollController = new PollController();
-
-//Настраиваем Шаблон handlebars
->>>>>>> development
 var handlebars = require('express3-handlebars').create({
   defaultLayout: 'admin',
   helpers: {

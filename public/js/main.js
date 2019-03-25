@@ -5,8 +5,10 @@ var clearBtn = document.getElementById('clearBtn');
 //Поле внизу выборы
 const chartContainer = document.querySelector('#chartContainer');
 //Наш запрос
-const uri = window.location.origin + "/poll";
+//const uri = window.location.origin + "/poll";
+//https://pollfoxy.herokuapp.com/
 
+const uri = "https://pollfoxy.herokuapp.com/" + "/poll";
 /**
  * Создает и возвращает объект графика  
  * 
