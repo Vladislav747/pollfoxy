@@ -8,7 +8,7 @@ const chartContainer = document.querySelector('#chartContainer');
 //const uri = window.location.origin + "/poll";
 //https://pollfoxy.herokuapp.com/
 
-const uri = "https://pollfoxy.herokuapp.com/" + "/poll";
+const uri = "https://pollfoxy.herokuapp.com" + "/poll";
 /**
  * Создает и возвращает объект графика  
  * 
