@@ -4,10 +4,8 @@ const form = document.getElementById('vote-form');
 var clearBtn = document.getElementById('clearBtn');
 //Поле внизу выборы
 const chartContainer = document.querySelector('#chartContainer');
-//Наш запрос
-//const uri = window.location.origin + "/poll";
-//https://pollfoxy.herokuapp.com/
 
+//Отправление нашего запроса
 const uri = window.location.origin + "/poll";
 /**
  * Создает и возвращает объект графика  
