@@ -3,6 +3,10 @@ const express = require('express');
 const app = express();
 const router = express.Router();
 
+//Контроллер
+var PollController = require('../controllers/pollController');
+var pollController = new PollController();
+
 //Настраиваем Шаблон handlebars
 var handlebars = require('express3-handlebars').create({
   defaultLayout: 'admin',
@@ -21,7 +25,13 @@ app.set('view engine', 'handlebars');
 //Если запрос уходит методом GET
 app.get('/', (req, res) => {
   console.log("Get запрос index");
-  res.render('home');
+  res.render('admin');
+});
+
+//Вывести все голоса
+app.get('/list', (req, res) => {
+  res = pollController.list(res);
+  return res;
 });
 
 module.exports = app;
