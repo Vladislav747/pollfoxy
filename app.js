@@ -15,6 +15,10 @@ const poll = require('./api/poll');
 //Admin methods
 const admin = require('./api/admin');
 
+//Enter
+const enter = require('./api/enter');
+
+
 //init app
 const app = express();
 
@@ -33,6 +37,10 @@ app.use('/poll', poll);
 
 //при запросе index/poll мы идем на /routes/poll.js
 app.use('/admin', admin);
+
+
+//при запросе index/poll мы идем на /routes/poll.js
+app.use('/enter', enter);
 
 // Define port
 const port = process.env.PORT || 3000;

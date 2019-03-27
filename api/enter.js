@@ -1,11 +1,6 @@
 //Объект роутинга
 const express = require('express');
 const app = express();
-const router = express.Router();
-
-//Контроллер
-var PollController = require('../controllers/pollController');
-var pollController = new PollController();
 
 //Настраиваем Шаблон handlebars
 var handlebars = require('express3-handlebars').create({
@@ -25,14 +20,8 @@ app.set('view engine', 'handlebars');
 //Сначала проходим через заполнение логина и пароля
 app.get('/', (req, res) => {
   console.log("Get запрос index");
-  res.render('admin');
-});
-
-//Вывести все голоса
-app.get('/list', (req, res) => {
-  res = pollController.list(res);
-  return res;
+  res.render('enter_admin', {
+  body: "title123"});
 });
 
 module.exports = app;
-
