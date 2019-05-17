@@ -24,7 +24,7 @@ var pusher = new Pusher({
 
 //Если запрос уходит методом GET
 router.get('/', (req, res) => {
-    res = pollController.list(res);
+    pollController.list(res);
     return res;
 });
 

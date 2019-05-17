@@ -1,22 +1,19 @@
 //Bringing the dependencies
-const express = require('express');
+const express = require('express'),
 //To manage for path routes
-const path = require('path');
-const bodyParser = require('body-parser');
+path = require('path'),
+bodyParser = require('body-parser'),
 //CORS headers
-const cors = require('cors');
+cors = require('cors');
 
 //DB Config with Mongoose
 require('./config/db');
 
 //Poll methods
-const poll = require('./api/poll');
+const poll = require('./routes/poll');
 
 //Admin methods
-const admin = require('./api/admin');
-
-//Enter
-const enter = require('./api/enter');
+const admin = require('./routes/admin');
 
 
 //init app
@@ -32,15 +29,28 @@ app.use(bodyParser.urlencoded({ extended: false }));
 //Enable cors
 app.use(cors());
 
+
+// app.configure('development', function() {
+//     app.use(express.logger());
+//     app.use(express.errorHandler({
+//         dumpExceptions: true,
+//         showStack: true
+//     }));
+//   });
+  
+//   app.configure('production', function() {
+//     app.use(express.logger());
+//     app.use(express.errorHandler());
+//   });
+
+
+
 //при запросе index/poll мы идем на /routes/poll.js
 app.use('/poll', poll);
 
-//при запросе index/poll мы идем на /routes/poll.js
+//при запросе index/admin мы идем на /routes/admin.js
 app.use('/admin', admin);
 
-
-//при запросе index/poll мы идем на /routes/poll.js
-app.use('/enter', enter);
 
 // Define port
 const port = process.env.PORT || 3000;
@@ -49,6 +59,6 @@ const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Server started on port ${port}`));
 
 //Routing in another file
-require('./api/routing.js')(app);
+require('./routes/routing.js')(app);
 
 module.exports = app;
