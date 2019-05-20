@@ -56,13 +56,14 @@ app.get('/', (req, res) => {
 
  
 
- if(isEmptyObject(req.cookies)){
-  //  res.render('enter_admin', { title: "Enter Panel"}); 
-   res.render('registration', { title: "Enter Panel"});
- }else{
-  res.render('admin', {title: "Admin Section", extra_css_scripts: '<link rel="stylesheet" type="text/css" href="/css/dashboard.css">' });
- }
+//  if(isEmptyObject(req.cookies)){
+//   //  res.render('enter_admin', { title: "Enter Panel"}); 
+//    res.render('registration', { title: "Enter Panel"});
+//  }else{
+//   res.render('admin', {title: "Admin Section", extra_css_scripts: '<link rel="stylesheet" type="text/css" href="/css/dashboard.css">' });
+//  }
   
+ res.render('admin', {title: "Admin Section", extra_css_scripts: '<link rel="stylesheet" type="text/css" href="/css/dashboard.css">' });
   
 });
 

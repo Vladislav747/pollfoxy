@@ -52,16 +52,18 @@
         <span> Dashboard </span>
       </h4>
       <form action="" class="d-flex justify-content-center">
-        <input type="search" class="form-control" placeholder="Введите свой запрос">
-        <button class="btn btn-primary btn-sm p" type="submit">
-          <i class="fa fa-search"></i>
-        </button>
+        <input type="search" class="form-control" id="searchForm" placeholder="Введите свой запрос">
+        
       </form>
 
 
-      <div class="pt-5 poll_result main__content">
-         <input type="button" id="example" value="Вывести все результаты" /> 
+      <div class="pt-5 poll_result main__content"> 
+          <button class="btn btn-primary" id="example" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Вывести все результаты/Скрыть результаты
+  </button>
+        <div class="collapse" id="collapseExample"> 
       <div class="main__content_result">
+      </div>
       </div>
       </div>
     </div>
