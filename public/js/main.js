@@ -136,7 +136,6 @@ function drawCanvasJs(votes, chartContainer, action, totalVotes) {
 
 }
 
-
 /**
  * Создание XMLHttpRequest запросом get 
  * 
