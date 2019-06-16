@@ -1,0 +1,25 @@
+<div class="container">
+
+        <form action="/admin/login" method="POST" class="form-login">
+                <h2 class="form-signin-heading">Войдите</h2>
+                <label for="inputEmail" class="sr-only">Логин</label>
+                <input type="email" name="inputEmail" id="inputEmail" class="form-control" placeholder="Email address"
+                        required autofocus>
+                <label for="inputPassword" class="sr-only">Пароль</label>
+                <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Password"
+                        required>
+                <a href="/admin/register" title="Регистрация в системе" tabindex="-1">
+                        <p class="displayInLine">
+                                Регистрация</p>
+                </a>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Войти</button>
+        </form>
+        {{#if errors}}
+        <div class="errorsForm">
+                <div class="alert alert-danger">{{#each errors}}{{/each}}</div>
+        </div>
+        {{/if}}
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script type="text/javascript" src="/js/enter.js"></script>

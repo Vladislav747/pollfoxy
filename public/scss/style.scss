@@ -1,0 +1,73 @@
+@import "vars.scss";
+@import "tabs.scss";
+body{
+    margin: 20px;  
+}
+
+span.navbar-toggler-icon{
+    width: 1.0em;
+    height: 1.0em; 
+  }
+  
+  a.navbar-brand strong{
+      font-size: 0.75rem;
+  }
+  
+  
+  .navbar .fixed-top .navbar-expand-lg .navbar-light{
+      z-index:999;
+  }
+  
+
+.sidebar-fixed{
+    height:100vh;
+    width: $width_sidebar;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.16);
+    z-index: 1;
+    background-color: rgb(255, 255, 255);
+    padding: 1rem;
+    padding-top: 0rem;
+    margin-top:40px;
+    left:5px;
+}
+.list-group {
+    padding-top:5%;
+}
+
+.sidebar-fixed .list-group .active{
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+    border-radius: 5px;
+}
+
+.sidebar-fixed .logo-wrapper {
+    padding: 2.5rem;
+}
+.sidebar-fixed .logo-wrapper img{
+    min-height: 50px;
+}
+@media (min-width: 1200px){
+    .navbar, .page-footer, main{
+        padding-left: 270px;
+    }
+}
+
+@media (min-width:481px) and (max-width:500px){
+    aside.sidebar{
+      display: none;
+    }
+}
+
+aside{
+    float:left;
+    clear: both;
+}
+
+main.pt5.max-lg-5 {
+ padding:20px;
+ margin-left: calc(#{$width_sidebar} - 10px);
+}
+
+main h4 {
+    font-size:0.6rem;
+}
+

@@ -1,6 +1,7 @@
 //Наша модель mongoose
 const Vote = require('../models/Vote');
 
+
 class PollController {
 
     /**
@@ -17,7 +18,7 @@ class PollController {
             .then(votes => res.status(200).json({ success: true, votes: votes }))
             .catch(err => {
                 console.log(err);
-                throw new Error("Ошибка в методе удаления данных", e);
+                throw new Error("Ошибка в методе вывода данных", e);
             });
     }
 

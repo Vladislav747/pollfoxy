@@ -11,7 +11,8 @@ const VoteSchema = new Schema({
     type: Number,
     required: true
   }
-});
+},
+{ collection : 'votes' });
 
 // Create collection and add schema
 const Vote = mongoose.model('Vote', VoteSchema);

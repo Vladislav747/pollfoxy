@@ -6,6 +6,7 @@ const keys = require('../config/keys');
 
 //Объект роутинга
 const express = require('express');
+const app = express();
 const router = express.Router();
 
 const Pusher = require('pusher');
@@ -24,8 +25,9 @@ var pusher = new Pusher({
 
 //Если запрос уходит методом GET
 router.get('/', (req, res) => {
-    res = pollController.list(res);
-    return res;
+    
+    pollController.list(res);
+   
 });
 
 //Если запрос уходит методом GET
