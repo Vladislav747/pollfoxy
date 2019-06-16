@@ -5,11 +5,13 @@
 
 Для хранения данных используется онлайн база данных Mongo в MLab.
 
-Предварительно создается Model Schema - Vote
+Имеются две модели Vote и User
 
+Новые голоса добавляются в базу данных 
+
+Новые пользователи добавляются в базу данных
 
 Доступно на https://pollfoxy.herokuapp.com/
-
 
 Первый скрипт package.json -> start -> node app.js
 Запуск тестов mocha public\tests\node_test.js или npm run test_mocha

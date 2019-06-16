@@ -1,3 +1,13 @@
+.tab-pane {
+  padding: 20px; }
+
+  a{
+  text-align: center;
+  }
+
+body {
+  margin: 20px; }
+
 span.navbar-toggler-icon {
   width: 1.0em;
   height: 1.0em; }
@@ -50,3 +60,11 @@ main.pt5.max-lg-5 {
 
 main h4 {
   font-size: 0.6rem; }
+
+  .errorsForm {
+    margin-top: 20px;
+  }
+
+  .hidden{
+    display: none;
+  } 

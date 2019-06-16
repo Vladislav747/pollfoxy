@@ -1,9 +1,8 @@
 @import "vars.scss";
-
+@import "tabs.scss";
 body{
-    
+    margin: 20px;  
 }
-
 
 span.navbar-toggler-icon{
     width: 1.0em;
@@ -18,7 +17,6 @@ span.navbar-toggler-icon{
   .navbar .fixed-top .navbar-expand-lg .navbar-light{
       z-index:999;
   }
-  
   
 
 .sidebar-fixed{
