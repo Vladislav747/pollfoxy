@@ -2,8 +2,8 @@
   "name": "pollfoxy",
   "version": "1.0.0",
   "description": "",
-  "engines":{
-    "node":"8.11.1"
+  "engines": {
+    "node": "8.11.1"
   },
   "main": "app.js",
   "scripts": {
