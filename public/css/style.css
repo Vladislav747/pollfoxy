@@ -24,13 +24,60 @@ a {
 /*end All Styles*/
 
 /*Login Panel*/
-#container{
+.container{
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: #222;
+  margin: 0;
+  padding: 0;
+  max-width: initial;
 }
 
+.login-container{
+  width:50%;
+  position: absolute;
+  transform: translate(50%, 20%);
+  background-color: #eff5ff;
+  padding: 15px;
+  border-radius: 10px;
+  
+}
+
+.form-login{
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.form-title{
+  width: 100%;
+  height: 50px;
+  color: #000;
+  font-size: 2.1em;
+  text-align: center;
+  margin: 0.1em 0;
+}
+
+.form-group{
+  width: 100%;
+  display: block;
+  float: left;
+}
+
+.form-group label{
+  width: 100%;
+  display: block;
+  float: left;
+  color: #000;
+  font-size: 1.3em;
+}
+
+.form-group .form-control{
+  background-color: #fff;
+  color: #1e1e1e;
+  border: 2px solid #b8b9bb;
+
+}
 
 /*end Login Panel*/
 
