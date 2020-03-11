@@ -70,13 +70,33 @@ a {
   float: left;
   color: #000;
   font-size: 1.3em;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .form-group .form-control{
   background-color: #fff;
   color: #1e1e1e;
   border: 2px solid #b8b9bb;
+  padding: 7px;
+  font-family: Arial, Helvetica, sans-serif;
+  outline: none;
+  transition: all ease-in-out .2s;
+}
 
+.form-control:focus{
+  border-width: 3px;
+  padding: 6px;
+}
+
+.form-btn{
+  display: block;
+  margin: 1em auto;
+  border: none;
+  background-color: #1E90FF;
+  color: #fff;
+  font-size: 1em;
+  outline: none;
+  padding: 15px;
 }
 
 /*end Login Panel*/
