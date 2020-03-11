@@ -40,7 +40,23 @@ a {
   background-color: #eff5ff;
   padding: 15px;
   border-radius: 10px;
+
   
+  
+}
+
+@media screen and (max-width: 1024px) {
+  .login-container{
+    width: 70%;
+    transform: translate(20%, 10%);
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .login-container{
+    width: 90%;
+    transform: translate(0%, 10%);
+  }
 }
 
 .form-login{
@@ -62,6 +78,13 @@ a {
   width: 100%;
   display: block;
   float: left;
+}
+
+@media screen and (max-width: 1024px) {
+  .form-group{
+    width: 90%;
+    margin-left: 5%;
+  }
 }
 
 .form-group label{
@@ -86,17 +109,29 @@ a {
 .form-control:focus{
   border-width: 3px;
   padding: 6px;
+  border-color: #1E90FF;
+  box-shadow: none;
 }
 
-.form-btn{
+.form-register{
+  font-size: 1.2em;
+}
+
+.loginform-btn{
   display: block;
-  margin: 1em auto;
+  margin: 1em auto !important;
   border: none;
-  background-color: #1E90FF;
-  color: #fff;
   font-size: 1em;
   outline: none;
   padding: 15px;
+  outline: none;
+  width: 50%;
+}
+
+@media screen and (max-width: 320px) {
+  .loginform-btn{
+    width: 75%;
+  }
 }
 
 /*end Login Panel*/
