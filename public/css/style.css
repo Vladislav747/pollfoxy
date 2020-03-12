@@ -212,3 +212,17 @@ main h4 {
 .errorsForm {
   margin-top: 20px;
 }
+
+#chartResult{
+  display: flex;
+  padding: 20px;
+  font-size: 2.0rem;
+}
+
+#chartTitle{
+  margin-left: 20px;
+}
+
+#vote-form span{
+  font-size: 1.3rem;
+}
