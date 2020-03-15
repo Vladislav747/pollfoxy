@@ -53,28 +53,36 @@
         
         <div class="tab-pane active" id="question_1" role="tabpanel" aria-labelledby="question_1-tab">
             <h1>Vote Please</h1>
-            <p>Vote for your favourite Computer OS</p>
-            <form id="vote-form">
-                <p>
-                    <label>
-                        <input name="os" type="radio" id="windows" value="Windows" />
-                        <span>Windows</span>
-                    </label>
-                </p>
-                <p>
-                    <label>
-                        <input name="os" type="radio" id="macos" value="Macos" />
-                        <span>Macos</span>
-                    </label>
-                </p>
-                <input type="submit" value="Vote" class="btn" />
-                <input type="button" value="Clear" class="btn" id="clearBtn" />
-            </form>
-            <div id="chartResult">
-                <p>Total Votes</p><p id="chartTitle"></p>
-            </div>
-            <div id="chartContainer">
 
+            <div class="vote-body flex justify-space-between">
+                <div class="left-side flex justify-center align-center">
+                    <div class="vote-form-wrapper">
+                        <p class="vote-form-title">Your favourite Computer OS?</p>
+                        <form id="vote-form">
+                            <p>
+                                <label>
+                                    <input name="os" type="radio" id="windows" value="Windows" />
+                                    <span>Windows</span>
+                                </label>
+                            </p>
+                            <p>
+                                <label>
+                                    <input name="os" type="radio" id="macos" value="Macos" />
+                                    <span>Macos</span>
+                                </label>
+                            </p>
+                            <input type="submit" value="Vote" class="btn" />
+                            <input type="button" value="Clear" class="btn" id="clearBtn" />
+                        </form>
+                    </div>
+                </div>
+                <div class="right-side">
+                    <div id="chartResult">
+                        <p>Total Votes</p><p id="chartTitle"></p>
+                    </div>
+                    <div id="chartContainer" ></div>
+                </div>
+                
             </div>
         </div>
         <div class="tab-pane" id="question_2" role="tabpanel" aria-labelledby="question_2-tab">

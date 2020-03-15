@@ -149,10 +149,30 @@ a.navbar-brand strong {
   z-index: 999;
 }
 
+.header-menu {
+  background-color: #fafafa;
+  padding: 0.5rem;
+  border-bottom: 1px solid #cdcdcd;
+}
 .header-item .header-link {
   display: block;
   text-decoration: none;
   padding: .5rem 1rem;
+}
+.vote-body {margin-top: 50px;}
+.vote-body .right-side {width: 50%;}
+.vote-body .left-side {
+  width: 50%;
+  padding: 15rem;
+}
+.vote-body .left-side .vote-form-wrapper {
+    padding: 3.2rem 2.9rem;
+    border-radius: 5px;
+    border: 1px solid #d5d5d5;
+}
+.vote-body .left-side .vote-form-wrapper .vote-form-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
 }
 
 .sidebar-fixed {
