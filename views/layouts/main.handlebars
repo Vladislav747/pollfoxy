@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/modifiers.css">
+    <link rel="stylesheet" href="css/header.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
@@ -59,20 +60,22 @@
                     <div class="vote-form-wrapper">
                         <p class="vote-form-title">Your favourite Computer OS?</p>
                         <form id="vote-form">
-                            <p>
+                            <div class="vote-form-item">
                                 <label>
                                     <input name="os" type="radio" id="windows" value="Windows" />
                                     <span>Windows</span>
                                 </label>
-                            </p>
-                            <p>
+                            </div>
+                            <div class="vote-form-item">
                                 <label>
                                     <input name="os" type="radio" id="macos" value="Macos" />
-                                    <span>Macos</span>
+                                    <span>Mac</span>
                                 </label>
-                            </p>
-                            <input type="submit" value="Vote" class="btn" />
-                            <input type="button" value="Clear" class="btn" id="clearBtn" />
+                            </div>
+                            <div class="vote-form-buttons">
+                                <input type="submit" value="Vote" class="btn" />
+                                <input type="button" value="Clear" class="btn" id="clearBtn" />
+                            </div>
                         </form>
                     </div>
                 </div>

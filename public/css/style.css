@@ -149,17 +149,8 @@ a.navbar-brand strong {
   z-index: 999;
 }
 
-.header-menu {
-  padding: 0.5rem;
-  border-bottom: 1px solid #cdcdcd;
-}
-.header-item .header-link {
-  display: block;
-  text-decoration: none;
-  padding: .5rem 1rem;
-}
 .vote-body {margin-top: 50px;}
-.vote-body .right-side {width: 50%;}
+.vote-body .right-side {width: 50%;padding-right: 5rem;}
 .vote-body .left-side {
   width: 50%;
   padding: 15rem;
@@ -173,6 +164,9 @@ a.navbar-brand strong {
   font-size: 2rem;
   margin-bottom: 2rem;
 }
+
+#vote-form .vote-form-item {margin-bottom: 5px;}
+#vote-form .vote-form-buttons {margin-top: 10px;}
 
 .sidebar-fixed {
   height: 100vh;
@@ -246,5 +240,5 @@ main h4 {
 }
 
 #vote-form span{
-  font-size: 1.3rem;
+  font-size: 1.5rem;
 }
