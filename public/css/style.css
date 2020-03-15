@@ -39,9 +39,6 @@ a {
   background-color: #eff5ff;
   padding: 15px;
   border-radius: 10px;
-
-  
-  
 }
 
 @media screen and (max-width: 1024px) {
@@ -150,6 +147,12 @@ a.navbar-brand strong {
 
 .navbar .fixed-top .navbar-expand-lg .navbar-light {
   z-index: 999;
+}
+
+.header-item .header-link {
+  display: block;
+  text-decoration: none;
+  padding: .5rem 1rem;
 }
 
 .sidebar-fixed {

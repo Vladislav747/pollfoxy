@@ -12,6 +12,7 @@
     <!-- Materialize CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/modifiers.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
@@ -20,91 +21,88 @@
 </head>
 
 <body>
-        <header>
-            <div class="nav nav-tabs">
-                <div class="left-side">
-                    <div class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#question_1" role="tab"
-                            aria-controls="home" aria-selected="true">Question № 1</a>
-                    </div>
-                    <div class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#question_2" role="tab"
-                            aria-controls="profile" aria-selected="true">Question № 2</a>
-                    </div>
-                    <div class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#question_3" role="tab"
-                            aria-controls="contact" aria-selected="false">Question № 3</a>
-                    </div>
-                    <div class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#question_4" role="tab"
-                            aria-controls="contact" aria-selected="false">Question № 4</a>
-                    </div>
+    <header>
+        <div class="header-menu flex justify-space-between">
+            <div class="left-side flex">
+                <div class="header-item">
+                    <a class="header-link" data-toggle="tab" href="#question_1" role="tab"
+                        aria-controls="home" aria-selected="true">Question № 1</a>
                 </div>
-                <div class="right-side">
-                    <div class="nav-item">
-                        <a class="nav-link" href="/admin/login/">Личный кабинет</a>
-                    </div>
+                <div class="header-item">
+                    <a class="header-link" data-toggle="tab" href="#question_2" role="tab"
+                        aria-controls="profile" aria-selected="true">Question № 2</a>
+                </div>
+                <div class="header-item">
+                    <a class="header-link" data-toggle="tab" href="#question_3" role="tab"
+                        aria-controls="contact" aria-selected="false">Question № 3</a>
+                </div>
+                <div class="header-item">
+                    <a class="header-link" data-toggle="tab" href="#question_4" role="tab"
+                        aria-controls="contact" aria-selected="false">Question № 4</a>
                 </div>
             </div>
-        </header>
-
-        <div class="tab-content" id="container">
-           
-            <div class="tab-pane active" id="question_1" role="tabpanel" aria-labelledby="question_1-tab">
-                <h1>Vote Please</h1>
-                <p>Vote for your favourite Computer OS</p>
-                <form id="vote-form">
-                    <p>
-                        <label>
-                            <input name="os" type="radio" id="windows" value="Windows" />
-                            <span>Windows</span>
-                        </label>
-                    </p>
-                    <p>
-                        <label>
-                            <input name="os" type="radio" id="macos" value="Macos" />
-                            <span>Macos</span>
-                        </label>
-                    </p>
-                    <input type="submit" value="Vote" class="btn" />
-                    <input type="button" value="Clear" class="btn" id="clearBtn" />
-                </form>
-                <div id="chartResult">
-                    <p>Total Votes</p><p id="chartTitle"></p>
+            <div class="right-side flex">
+                <div class="header-item">
+                    <a class="header-link" href="/admin/login/">Личный кабинет</a>
                 </div>
-                <div id="chartContainer">
-
-                </div>
-            </div>
-            <div class="tab-pane" id="question_2" role="tabpanel" aria-labelledby="question_2-tab">
-                <h3>Панель 2</h3>
-                <p>Содержимое 2 панели...</p>
-            </div>
-            <div class="tab-pane" id="question_3" role="tabpanel" aria-labelledby="question_3-tab">
-                <h3>Панель 3</h3>
-                <p>Содержимое 3 панели...</p>
-            </div>
-            <div class="tab-pane" id="question_4" role="tabpanel" aria-labelledby="question_4-tab">
-                <h3>Панель 4</h3>
-                <p>Содержимое 4 панели...</p>
             </div>
         </div>
+    </header>
+
+    <div class="tab-content" id="container">
+        
+        <div class="tab-pane active" id="question_1" role="tabpanel" aria-labelledby="question_1-tab">
+            <h1>Vote Please</h1>
+            <p>Vote for your favourite Computer OS</p>
+            <form id="vote-form">
+                <p>
+                    <label>
+                        <input name="os" type="radio" id="windows" value="Windows" />
+                        <span>Windows</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input name="os" type="radio" id="macos" value="Macos" />
+                        <span>Macos</span>
+                    </label>
+                </p>
+                <input type="submit" value="Vote" class="btn" />
+                <input type="button" value="Clear" class="btn" id="clearBtn" />
+            </form>
+            <div id="chartResult">
+                <p>Total Votes</p><p id="chartTitle"></p>
+            </div>
+            <div id="chartContainer">
+
+            </div>
+        </div>
+        <div class="tab-pane" id="question_2" role="tabpanel" aria-labelledby="question_2-tab">
+            <h3>Панель 2</h3>
+            <p>Содержимое 2 панели...</p>
+        </div>
+        <div class="tab-pane" id="question_3" role="tabpanel" aria-labelledby="question_3-tab">
+            <h3>Панель 3</h3>
+            <p>Содержимое 3 панели...</p>
+        </div>
+        <div class="tab-pane" id="question_4" role="tabpanel" aria-labelledby="question_4-tab">
+            <h3>Панель 4</h3>
+            <p>Содержимое 4 панели...</p>
+        </div>
+    </div>
 
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/pusher/4.2.2/pusher.min.js"></script>
-        <!-- Jquery JavaScript Library -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <!-- Materialize Compiled and minified JavaScript -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pusher/4.2.2/pusher.min.js"></script>
+    <!-- Jquery JavaScript Library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Materialize Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 
-        <!-- Canvas JavaScript -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.js"></script>
+    <!-- Canvas JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.js"></script>
 
-        <script src="js/main.js"></script>
-
-
-
+    <script src="js/main.js"></script>
 
 </body>
 
