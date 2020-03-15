@@ -1,6 +1,13 @@
 .flex {display: flex;}
+.flex-column {display: flex;flex-direction: column;}
 .justify-center {justify-content: center;}
 .justify-space-between {justify-content: space-between;}
 .align-center {align-items: center;}
 
 .bg-grey-1 {background-color: #fafafa;}
+
+.color-777 {color: #777;}
+
+.border-1 {border: 1px solid #d5d5d5;}
+
+.rounded {border-radius: 5px;}

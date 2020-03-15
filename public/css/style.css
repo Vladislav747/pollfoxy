@@ -153,20 +153,18 @@ a.navbar-brand strong {
 .vote-body .right-side {width: 50%;padding-right: 5rem;}
 .vote-body .left-side {
   width: 50%;
-  padding: 15rem;
+  padding: 5rem;
 }
-.vote-body .left-side .vote-form-wrapper {
-    padding: 3.2rem 2.9rem;
-    border-radius: 5px;
-    border: 1px solid #d5d5d5;
+.vote-body .left-side .vote-form-inner {
+    padding: 3.2rem 2.9rem;    
 }
-.vote-body .left-side .vote-form-wrapper .vote-form-title {
+.vote-body .left-side .vote-form-inner .vote-form-title {
   font-size: 2rem;
   margin-bottom: 2rem;
 }
 
 #vote-form .vote-form-item {margin-bottom: 5px;}
-#vote-form .vote-form-buttons {margin-top: 10px;}
+#vote-form .vote-form-buttons {margin-top: 15px;}
 
 .sidebar-fixed {
   height: 100vh;
@@ -231,15 +229,13 @@ main h4 {
 
 .chartResult{
   display: flex;
-  padding: 10px;
-  font-size: 2.0rem;
-  width: 50%;
-  justify-content: center;
+  margin-top: 2rem;
+  font-size: 1.5rem;
   align-items: center;
 }
 
 #chartTitle{
-  margin-left: 20px;
+  margin-left: 10px;
 }
 
 #vote-form span{

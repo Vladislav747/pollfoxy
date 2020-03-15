@@ -53,36 +53,41 @@
     <div class="tab-content" id="container">
         
         <div class="tab-pane active" id="question_1" role="tabpanel" aria-labelledby="question_1-tab">
-            <h1 class="text-center">Vote Please</h1>
+            <h1 class="text-center">Question № 1</h1>
 
             <div class="vote-body flex justify-space-between">
-                <div class="left-side flex justify-center align-center">
+                <div class="left-side flex-column justify-center align-center">
                     <div class="vote-form-wrapper">
-                        <p class="vote-form-title">Your favourite Computer OS?</p>
-                        <form id="vote-form">
-                            <div class="vote-form-item">
-                                <label>
-                                    <input name="os" type="radio" id="windows" value="Windows" />
-                                    <span>Windows</span>
-                                </label>
-                            </div>
-                            <div class="vote-form-item">
-                                <label>
-                                    <input name="os" type="radio" id="macos" value="Macos" />
-                                    <span>Mac</span>
-                                </label>
-                            </div>
-                            <div class="vote-form-buttons">
-                                <input type="submit" value="Vote" class="btn" />
-                                <input type="button" value="Clear" class="btn" id="clearBtn" />
-                            </div>
-                        </form>
+                        <div class="vote-form-inner border-1 rounded">
+                            <p class="vote-form-title">Your favourite Computer OS?</p>
+                            <form id="vote-form">
+                                <div class="vote-form-item">
+                                    <label>
+                                        <input name="os" type="radio" id="windows" value="Windows" />
+                                        <span>Windows</span>
+                                    </label>
+                                </div>
+                                <div class="vote-form-item">
+                                    <label>
+                                        <input name="os" type="radio" id="macos" value="Macos" />
+                                        <span>Mac</span>
+                                    </label>
+                                </div>
+                                <div class="vote-form-buttons">
+                                    <input type="submit" value="Vote" class="btn" />
+                                    <input type="button" value="Clear" class="btn" id="clearBtn" />
+                                </div>
+                            </form>
+                        </div>
+
+                        <div id="chartResult" class="chartResult color-777">
+                            <span>Total Votes</span><span id="chartTitle"></span>
+                        </div>
                     </div>
+                    
+                    
                 </div>
                 <div class="right-side">
-                    <div id="chartResult" class="chartResult bg-grey-1">
-                        <p>Total Votes</p><p id="chartTitle"></p>
-                    </div>
                     <div id="chartContainer" ></div>
                 </div>
                 
