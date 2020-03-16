@@ -174,7 +174,7 @@ aside {
 }
 
 aside.sidebar {
-  display: block;
+  display: none;
 }
 
 main.pt5.max-lg-5 {
