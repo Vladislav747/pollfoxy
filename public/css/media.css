@@ -35,6 +35,15 @@
         width: 90%;
         transform: translate(0%, 10%);
     }
+
+    .left-side .header-item{
+        display: none;
+    }
+
+    .left-side .header-bars{
+        display: block;
+    }
+
 }
 
 @media (max-width: 320px) {
