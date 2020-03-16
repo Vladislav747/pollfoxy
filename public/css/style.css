@@ -173,6 +173,10 @@ aside {
   clear: both;
 }
 
+aside.sidebar {
+  display: block;
+}
+
 main.pt5.max-lg-5 {
   padding: 20px;
   margin-left: calc(190px - 10px);
