@@ -50,4 +50,9 @@
     .loginform-btn{
         width: 75%;
     }
+
+    .login-container{
+        width: 80%;
+        transform: translate(10%, 0%);
+    }
 }
