@@ -24,7 +24,7 @@
     .vote-body .right-side {width: 100%;padding-right: 0px;}
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 768px) {
     aside.sidebar {
       display: block;
     }
