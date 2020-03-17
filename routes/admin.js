@@ -89,7 +89,7 @@ app.get('/', (req, res) => {
 
   if (req.signedCookies.email && req.signedCookies.userLogged) {
 
-    res.render('admin', {
+    res.render('admin_v2', {
       title: "Admin Section",
       extra_css_scripts: '<link rel="stylesheet" type="text/css" href="/css/dashboard.css">',
       email: req.signedCookies.email
