@@ -92,6 +92,7 @@ app.get('/', (req, res) => {
     res.render('admin_v2', {
       title: "Admin Section",
       extra_css_scripts: '<link rel="stylesheet" type="text/css" href="/css/dashboard.css">',
+      extra_js_scripts: '<script type="text/javascript" src="/js/admin_panel.js"></script>',
       email: req.signedCookies.email
     });
 

@@ -1,27 +1,35 @@
 <body class="grey lighten-3 container-fluid">
   <header class="header container-fluid__header">
 
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
-      <div class="navbar__content container-fluid">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar header-section">
+      <div class="navbar__content container-fluid left-side">
         <a href="#" class="navbar-brand waves-effect"><strong class="blue-text">Admin Section</strong></a>
-        <button class="navbar-toggler navbar-container__button" type="button" data-toggle="collapse" data-target="#navbarContent"
-          aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-
-          <span class="navbar-toggler-icon button__inner">
-
-          </span>
-        </button>
 
         <div class="collapse navbar-collapse navbar__menu">
-
+       
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a href="#" class="nav-link waves-effect">Главная</a>
+              <a href="#" class="nav-link waves-effect">Home</a>
             </li>
           </ul>
 
         </div>
+
       </div>
+
+      <div class="navbar__content right-side">
+        <div class="collapse navbar-collapse navbar__menu">
+       
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a href="#" class="nav-link waves-effect">Logout</a>
+            </li>
+          </ul>
+
+        </div>
+
+      </div>
+
     </nav>
   </header>
 
@@ -46,6 +54,8 @@
   </aside>
 
   <main class="pt5 main">
+    <div id="minimize"></div>
+
     <div class="container-fluid mt-5 ">
       <h4 class="mb-2 mb-sm-0 pt-1">
         <a href="#">Home Page</a>
